@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
 import { Pagination } from "./pages/Pagination";
+import { useSwipeable } from "react-swipeable";
 
 function App() {
   const [currentPage, setCurrentPage] = useState(0);
   const [backgroundColor, setBackgroundColor] = useState("#9B5DE5");
+ const handlers = useSwipeable({
+	onSwipedUp: () => handleRightArrowPress(),
+	onSwipedDown: () => handleLeftArrowPress()
+ })
+
 
   // increment page number on right arrow press
   const handleRightArrowPress = () => {
@@ -13,6 +19,8 @@ function App() {
       setCurrentPage(currentPage + 1);
     }
   };
+
+  
 
   // decrement page number on left arrow press
   const handleLeftArrowPress = () => {
@@ -31,6 +39,10 @@ function App() {
       handleLeftArrowPress();
     }
   };
+
+  // Detect swipe up
+
+
 
   const updateBackground = () => {
     let color = "";
@@ -71,9 +83,10 @@ function App() {
   }, [currentPage]);
 
   return (
-    <div
+    <div 
       className={`gap-4 h-screen w-full m-0 flex flex-col text-white duration-300 transition-colors items-center justify-center`}
       style={{ backgroundColor: backgroundColor }}
+	  {...handlers}
     >
       <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} />
     </div>
