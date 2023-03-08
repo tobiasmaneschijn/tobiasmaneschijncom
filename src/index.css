@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: gotham;
+    font-weight: bold;
+    src: url(assets/fonts/GothamBold.otf);
+  } 
+
+  @font-face {
+    font-family: gotham;
+    font-weight: medium;
+    src: url(assets/fonts/GothamMedium.ttf);
+  } 
+
+  
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: gotham;
+}
+
+
+
+/* fades in and slides in from bottom */
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+       transform: translateY(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeInAnimation 1s ease-in-out;
+}
