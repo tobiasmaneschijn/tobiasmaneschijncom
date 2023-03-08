@@ -2,6 +2,7 @@ import PaginationArrow from "../components/PaginationArrow";
 import { FirstPage } from "./FirstPage";
 import { FourthPage } from "./FourthPage";
 import { SecondPage } from "./SecondPage";
+import { SocialsAcceptPage, SocialsDeclinePage } from "./SocialsPage";
 import { ThirdPage } from "./ThirdPage";
 
 export type PaginationProps = {
@@ -26,10 +27,25 @@ export const Pagination = ({
       {currentPage == 3 && (
         <FourthPage currentPage={currentPage} setCurrentPage={setCurrentPage} />
       )}
-	   <PaginationArrow
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
+      {currentPage == 4 && (
+        <SocialsAcceptPage
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      )}
+
+      {currentPage == 5 && (
+        <SocialsDeclinePage
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      )}
+      {(currentPage < 3 ) && (
+        <PaginationArrow
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      )}
     </div>
   );
 };

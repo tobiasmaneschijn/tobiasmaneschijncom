@@ -50,9 +50,15 @@ function App() {
       case 3:
         color = "#00BBF9";
         break;
+      case 4:
+        color = "#00BBF9";
+        break;
+
+      case 5:
+        color = "#00BBF9";
+        break;
     }
     setBackgroundColor(color);
-	
   };
 
   // add event listener for key presses using useEffect
@@ -67,12 +73,9 @@ function App() {
   return (
     <div
       className={`gap-4 h-screen w-full m-0 flex flex-col text-white duration-300 transition-colors items-center justify-center`}
-	  style={{backgroundColor: backgroundColor}}
-	>
-      <Pagination
-        currentPage={currentPage}
-        setCurrentPage={handleRightArrowPress}
-      />
+      style={{ backgroundColor: backgroundColor }}
+    >
+      <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} />
     </div>
   );
 }
