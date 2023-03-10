@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-
 /**
  * @todo Does not work currently. Need to fix.
  * @param onScrollUp callback for scroll up
@@ -12,8 +11,10 @@ export function useScrollHandler(
   onScrollDown: () => void,
   timeout: number = 1000
 ) {
+  // canScroll is used to prevent multiple scrolls from happening at once
   const [canScroll, setCanScroll] = useState(true);
 
+  // handleSingleScroll is called on every scroll event
   const handleSingleScroll = (event: any) => {
     // only run once per scroll
     if (!canScroll) {
@@ -27,18 +28,19 @@ export function useScrollHandler(
     setCanScroll(false);
   };
 
+  // timerHandle is called after timeout is reached
   const timerHandle = () => {
     setCanScroll(true);
   };
 
-  // set canScroll to false after timeout
+  // if canScroll is false, set it to true after timeout
   useEffect(() => {
     if (!canScroll) {
       setTimeout(timerHandle, timeout);
     }
   }, [canScroll]);
 
-  // bind singleScroll to window
+  // add event listener for scroll
   useEffect(() => {
     window.addEventListener("wheel", handleSingleScroll);
     return () => {
