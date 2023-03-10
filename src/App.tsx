@@ -1,49 +1,12 @@
 import { useEffect, useState } from "react";
 import { Pagination } from "./pages/Pagination";
 import { useSwipeable } from "react-swipeable";
-
+import { usePageNavigation } from "./hooks/usePageNavigation";
 function App() {
-  const [currentPage, setCurrentPage] = useState(0);
+
   const [backgroundColor, setBackgroundColor] = useState("#9B5DE5");
- const handlers = useSwipeable({
-	onSwipedUp: () => handleRightArrowPress(),
-	onSwipedDown: () => handleLeftArrowPress()
- })
-
-
-  // increment page number on right arrow press
-  const handleRightArrowPress = () => {
-    console.log("Right Arrow");
-    if (currentPage < 3) {
-      console.log(currentPage + 1);
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  
-
-  // decrement page number on left arrow press
-  const handleLeftArrowPress = () => {
-    console.log("Left Arrow");
-    if (currentPage > 0) {
-      console.log(currentPage - 1);
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
-  // handle key presses
-  const handleKeyPress = (event: any) => {
-    if (event.key === "ArrowRight") {
-      handleRightArrowPress();
-    } else if (event.key === "ArrowLeft") {
-      handleLeftArrowPress();
-    }
-  };
-
-  // Detect swipe up
-
-
-
+  const [currentPage, setCurrentPage, handlers] = usePageNavigation();
+ 
   const updateBackground = () => {
     let color = "";
     switch (currentPage) {
@@ -75,21 +38,19 @@ function App() {
 
   // add event listener for key presses using useEffect
   useEffect(() => {
-    window.addEventListener("keydown", handleKeyPress);
-    updateBackground();
-    return () => {
-      window.removeEventListener("keydown", handleKeyPress);
-    };
-  }, [currentPage]);
+	updateBackground();
+}, [currentPage]);
 
   return (
-    <div 
-      className={`gap-4 h-screen w-full m-0 flex flex-col text-white duration-300 transition-colors items-center justify-center`}
+	<div className="h-screen w-full m-0 overflow-hidden"  >
+    <div
+      className={`gap-4 h-screen w-full m-0 flex flex-col text-white duration-300 transition-colors items-center justify-center overflow-hidden`}
       style={{ backgroundColor: backgroundColor }}
-	  {...handlers}
+      {...handlers}
     >
       <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} />
     </div>
+	</div>
   );
 }
 
