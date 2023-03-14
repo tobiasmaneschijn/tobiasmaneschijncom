@@ -1,8 +1,8 @@
-import linkedinIcon from "../assets/linkedin.svg";
+import linkedinIcon from "../../assets/linkedin.svg";
 import { PaginationProps } from "./Pagination";
-import PaginationArrow from "../components/PaginationArrow";
+import PaginationArrow from "../../components/PaginationArrow";
 import Lottie from "lottie-react";
-import Connect from "../assets/connect.json";
+import Connect from "../../assets/connect.json";
 
 export const FourthPage = ({
   currentPage,

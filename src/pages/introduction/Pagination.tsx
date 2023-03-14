@@ -1,4 +1,5 @@
-import PaginationArrow from "../components/PaginationArrow";
+import PaginationArrow from "../../components/PaginationArrow";
+import { useMyContext } from "../../hooks/useMyContext";
 import { FirstPage } from "./FirstPage";
 import { FourthPage } from "./FourthPage";
 import { SecondPage } from "./SecondPage";
@@ -13,6 +14,9 @@ export const Pagination = ({
   currentPage,
   setCurrentPage,
 }: PaginationProps) => {
+
+ 
+
   return (
     <div className="w-screen h-screen flex justify-center flex-col bg-transparent overflow-hidden">
       {currentPage == 0 && (

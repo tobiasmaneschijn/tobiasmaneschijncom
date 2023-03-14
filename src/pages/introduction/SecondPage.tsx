@@ -1,9 +1,6 @@
-import linkedinIcon from "../assets/linkedin.svg";
 import Lottie from "lottie-react";
-import arrowDownAnimation from "../assets/arrowdown.json";
 import { PaginationProps } from "./Pagination";
-import PaginationArrow from "../components/PaginationArrow";
-import Student from "../assets/student.json"
+import Student from "../../assets/student.json"
 
 export const SecondPage = ({
   currentPage,

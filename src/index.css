@@ -14,7 +14,10 @@
     src: url(assets/fonts/GothamMedium.ttf);
   } 
 
-  
+  h1 {
+    font-family: gotham;
+    font-weight: bold;
+  }
 body {
     margin: 0;
     overflow: hidden;

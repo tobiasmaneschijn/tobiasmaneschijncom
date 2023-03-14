@@ -1,15 +1,14 @@
-import linkedinIcon from "../assets/linkedin.svg";
+import linkedinIcon from "../../assets/linkedin.svg";
 import { PaginationProps } from "./Pagination";
 import Lottie from "lottie-react";
-import Connect from "../assets/connect.json";
+import Connect from "../../assets/connect.json";
 
-import FacebookIcon from "../assets/icons8-facebook.svg"
-import TwitterIcon from "../assets/icons8-twitter.svg"
-import GithubIcon from "../assets/icons8-github.svg"
-import LinkedinIcon from "../assets/icons8-linkedin.svg"
-import InstaIcon from "../assets/icons8-instagram.svg"
-
-
+import FacebookIcon from "../../assets/icons8-facebook.svg";
+import TwitterIcon from "../../assets/icons8-twitter.svg";
+import GithubIcon from "../../assets/icons8-github.svg";
+import LinkedinIcon from "../../assets/icons8-linkedin.svg";
+import InstaIcon from "../../assets/icons8-instagram.svg";
+import ThreeButton from "../../components/three/ThreeButton";
 
 const Socials = () => {
   return (
@@ -61,10 +60,8 @@ export const SocialsAcceptPage = ({
       <h1 className="text-3xl z-10 font-bold text-center">
         Great! Here’s my socials
       </h1>
-
-
       <div className="flex flex-row gap-12 text-center items-center">
-      <Socials />
+        <Socials />
       </div>
     </div>
   );
@@ -79,7 +76,6 @@ export const SocialsDeclinePage = ({
       <h1 className="text-3xl z-10 font-bold text-center">
         Oh well, here’s my socials still just in case!
       </h1>
-
 
       <div className="flex flex-row gap-12 text-center items-center">
         <Socials />

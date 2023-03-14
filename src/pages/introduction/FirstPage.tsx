@@ -1,6 +1,6 @@
-import linkedinIcon from "../assets/linkedin.svg";
-import PaginationArrow from "../components/PaginationArrow";
-import WavingHand from "../assets/wavinghand.json"
+import linkedinIcon from "../../assets/linkedin.svg";
+import PaginationArrow from "../../components/PaginationArrow";
+import WavingHand from "../../assets/wavinghand.json"
 
 import { PaginationProps } from "./Pagination";
 import Lottie from "lottie-react";

@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import { Pagination as Introduction } from "./pages/Pagination";
+import { Pagination as Introduction } from "./pages/introduction/Pagination";
 import { useSwipeable } from "react-swipeable";
 import { usePageNavigation } from "./hooks/usePageNavigation";
 import { MyContext } from "./context/MyContext";
 import { useInitializeContext, useMyContext } from "./hooks/useMyContext";
-import { AboutMe } from "./pages/AboutMe";
+import { MainPage } from "./pages/MainPage";
 
 export function AppWrapper() {
   const contextValue = useInitializeContext();
@@ -67,7 +67,7 @@ function App() {
             setCurrentPage={setCurrentPage}
           />
         ) : (
-          <AboutMe />
+          <MainPage />
         )}
       </div>
     </div>
