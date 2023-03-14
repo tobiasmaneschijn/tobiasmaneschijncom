@@ -15,6 +15,8 @@ export function usePageNavigation(): [
     preventScrollOnSwipe: false,
   });
 
+/hallo/
+
   // increment page number on right arrow press
   const handleRightArrowPress = () => {
     console.log("Right Arrow");

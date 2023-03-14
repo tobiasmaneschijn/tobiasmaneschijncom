@@ -1,12 +1,25 @@
-import { useEffect, useState } from "react";
-import { Pagination } from "./pages/Pagination";
+import { useContext, useEffect, useState } from "react";
+import { Pagination as Introduction } from "./pages/Pagination";
 import { useSwipeable } from "react-swipeable";
 import { usePageNavigation } from "./hooks/usePageNavigation";
-function App() {
+import { MyContext } from "./context/MyContext";
+import { useInitializeContext, useMyContext } from "./hooks/useMyContext";
+import { AboutMe } from "./pages/AboutMe";
 
+export function AppWrapper() {
+  const contextValue = useInitializeContext();
+  return (
+    <MyContext.Provider value={contextValue}>
+      <App />
+    </MyContext.Provider>
+  );
+}
+
+function App() {
+  const context = useMyContext();
   const [backgroundColor, setBackgroundColor] = useState("#9B5DE5");
   const [currentPage, setCurrentPage, handlers] = usePageNavigation();
- 
+
   const updateBackground = () => {
     let color = "";
     switch (currentPage) {
@@ -38,19 +51,26 @@ function App() {
 
   // add event listener for key presses using useEffect
   useEffect(() => {
-	updateBackground();
-}, [currentPage]);
+    updateBackground();
+  }, [currentPage]);
 
   return (
-	<div className="h-screen w-full m-0 overflow-hidden"  >
-    <div
-      className={`gap-4 h-screen w-full m-0 flex flex-col text-white duration-300 transition-colors items-center justify-center overflow-hidden`}
-      style={{ backgroundColor: backgroundColor }}
-      {...handlers}
-    >
-      <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} />
+    <div className="h-screen w-full m-0 overflow-hidden">
+      <div
+        className={`gap-4 h-screen w-full m-0 flex flex-col text-white duration-300 transition-colors items-center justify-center overflow-hidden`}
+        style={{ backgroundColor: backgroundColor }}
+        {...handlers}
+      >
+        {context.showIntroduction ? (
+          <Introduction
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
+        ) : (
+          <AboutMe />
+        )}
+      </div>
     </div>
-	</div>
   );
 }
 
