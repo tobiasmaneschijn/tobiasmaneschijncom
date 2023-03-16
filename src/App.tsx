@@ -6,6 +6,7 @@ import { MyContext } from "./context/MyContext";
 import { useInitializeContext, useMyContext } from "./hooks/useMyContext";
 import { MainPage } from "./pages/MainPage";
 
+
 export function AppWrapper() {
   const contextValue = useInitializeContext();
   return (
@@ -16,6 +17,10 @@ export function AppWrapper() {
 }
 
 function App() {
+
+  
+  
+  
   const context = useMyContext();
   const [backgroundColor, setBackgroundColor] = useState("#9B5DE5");
   const [currentPage, setCurrentPage, handlers] = usePageNavigation();

@@ -1,29 +1,23 @@
 import { Canvas } from "@react-three/fiber";
-import Section from "../components/Section";
-import Blob from "../components/three/Blob";
-import { Box } from "../components/three/Box";
-import ThreeButton from "../components/three/ThreeButton";
-import MoonButton from "../components/three/ThreeButton";
+import { getProject } from "@theatre/core";
+import { SheetProvider } from "@theatre/r3f";
+import { Experience } from "../components/Experience";
+import animationState from "../assets/animations/experience.json"
 
 export function MainPage() {
+  const sheet = getProject("Experience", {state: animationState}).sheet("Experience Sheet");
   return (
-    <div className="w-full h-full flex flex-col text-center gap-4">
-      <h1 className="text-3xl font-bold p-8">Tobias Maneschijn</h1>
-    <Section model={<ThreeButton/>} modelPlacement="right">
-      <Section.Title>Hi, I'm Tobias</Section.Title>
-      <Section.Description>
-        I'm a software engineering student looking for an internship this fall.
-      </Section.Description>
-   
-    </Section>
+    <Canvas
+      gl={{ preserveDrawingBuffer: true }}
+      camera={{
+        fov: 64,
+        position: [2.3, 1.5, 2.3],
+      }}
+    >
+        <SheetProvider sheet={sheet}>
 
-    <Section model={<ThreeButton/>}  modelPlacement="left">
-      <Section.Title>Hi, I'm Tobias</Section.Title>
-      <Section.Description>
-        I'm a software engineering student looking for an internship this fall.
-      </Section.Description>
-    </Section>
-    </div>
+      <Experience />
+      </SheetProvider>
+    </Canvas>
   );
 }
-
