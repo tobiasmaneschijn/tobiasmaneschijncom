@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { SwipeableHandlers, useSwipeable } from "react-swipeable";
-import { useScrollHandler } from "./useScrollHandler";
+import { useMyContext } from "./useMyContext";
 
 export function usePageNavigation(): [
   currentPage: number,
@@ -8,29 +8,25 @@ export function usePageNavigation(): [
   handlers: SwipeableHandlers
 ] {
   const [currentPage, setCurrentPage] = useState(0);
-
+  const context = useMyContext();
   const handlers = useSwipeable({
     onSwipedUp: () => handleRightArrowPress(),
     onSwipedDown: () => handleLeftArrowPress(),
     preventScrollOnSwipe: false,
   });
 
-/hallo/
-
   // increment page number on right arrow press
   const handleRightArrowPress = () => {
-    console.log("Right Arrow");
-    if (currentPage < 3) {
-      console.log(currentPage + 1);
+    if (currentPage < 3 && context.showIntroduction) {
       setCurrentPage(currentPage + 1);
+    } else if (currentPage > 3 && context.showIntroduction) {
+      context.setShowIntroduction(false);
     }
   };
 
   // decrement page number on left arrow press
   const handleLeftArrowPress = () => {
-    console.log("Left Arrow");
     if (currentPage > 0) {
-      console.log(currentPage - 1);
       setCurrentPage(currentPage - 1);
     }
   };
@@ -41,6 +37,9 @@ export function usePageNavigation(): [
       handleRightArrowPress();
     } else if (event.key === "ArrowLeft") {
       handleLeftArrowPress();
+    } else if (event.key === "r") {
+      context.setShowIntroduction(true);
+      setCurrentPage(0);
     }
   };
 

@@ -14,7 +14,10 @@
     src: url(assets/fonts/GothamMedium.ttf);
   } 
 
-  
+  h1 {
+    font-family: gotham;
+    font-weight: bold;
+  }
 body {
     margin: 0;
     overflow: hidden;
@@ -38,4 +41,20 @@ body {
 
 .fade-in {
     animation: fadeInAnimation 1s ease-in-out;
+}
+
+
+/* fades in and slides in from bottom */
+
+@keyframes fadeInAnimation {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+.fade2-in {
+  animation: fadeInAnimation 1s ease-in-out;
 }

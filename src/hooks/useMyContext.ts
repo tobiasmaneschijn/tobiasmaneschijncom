@@ -1,10 +1,11 @@
 import { useContext, useState } from 'react';
 import { MyContext } from '../context/MyContext';
+import useLocalStorage from './useLocalStorageState';
 
 
 // used to setup the states of the context
 export function useInitializeContext() {
-  const [showIntroduction, setShowIntroduction] = useState(true);
+  const [showIntroduction, setShowIntroduction] = useLocalStorage("show_introduction", true);
   const [currentPage, setCurrentPage] = useState(0);
 return {
     showIntroduction,

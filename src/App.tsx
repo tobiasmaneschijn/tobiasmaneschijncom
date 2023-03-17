@@ -1,10 +1,12 @@
-import { useContext, useEffect, useState } from "react";
-import { Pagination as Introduction } from "./pages/Pagination";
+import { ReactNode, useContext, useEffect, useState } from "react";
+import { Pagination as Introduction } from "./pages/introduction/Pagination";
 import { useSwipeable } from "react-swipeable";
 import { usePageNavigation } from "./hooks/usePageNavigation";
 import { MyContext } from "./context/MyContext";
 import { useInitializeContext, useMyContext } from "./hooks/useMyContext";
-import { AboutMe } from "./pages/AboutMe";
+import { MainPage } from "./pages/MainPage";
+import { animated, useTransition } from "react-spring";
+
 
 export function AppWrapper() {
   const contextValue = useInitializeContext();
@@ -16,6 +18,10 @@ export function AppWrapper() {
 }
 
 function App() {
+
+
+
+
   const context = useMyContext();
   const [backgroundColor, setBackgroundColor] = useState("#9B5DE5");
   const [currentPage, setCurrentPage, handlers] = usePageNavigation();
@@ -57,7 +63,7 @@ function App() {
   return (
     <div className="h-screen w-full m-0 overflow-hidden">
       <div
-        className={`gap-4 h-screen w-full m-0 flex flex-col text-white duration-300 transition-colors items-center justify-center overflow-hidden`}
+        className={`gap-4 h-screen w-full m-0 flex flex-col text-white duration-300 transition-all items-center justify-center overflow-hidden fade2-in ${context.showIntroduction ? "" : "bg-gradient-to-r from-[#ff416c] to-[#ff4b2b] "}}`}
         style={{ backgroundColor: backgroundColor }}
         {...handlers}
       >
@@ -67,11 +73,31 @@ function App() {
             setCurrentPage={setCurrentPage}
           />
         ) : (
-          <AboutMe />
+          <MainPage />
         )}
       </div>
     </div>
   );
 }
+
+// take childen as a prop
+const transitionDiv = ({ children }:
+  { children: ReactNode }
+) => {
+  const context = useMyContext();
+  const [transitions, api] = useTransition(context.showIntroduction, () => ({
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 1 },
+  }))
+
+  return (
+    <>{transitions((style, item) => <animated.div style={style} >
+      {children}
+    </animated.div>)}
+    </>
+  )
+}
+
 
 export default App;
