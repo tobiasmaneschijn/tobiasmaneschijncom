@@ -9,6 +9,7 @@ import {
   SheetProvider,
   PerspectiveCamera,
   useCurrentSheet,
+  
 } from "@theatre/r3f";
 import { useFrame } from "@react-three/fiber";
 import { getProject, val } from "@theatre/core";
@@ -16,12 +17,12 @@ import { MacBook } from "./Macbook";
 export const Experience = () => {
   const sheet = useCurrentSheet();
   const scroll = useScroll();
-
+  
   if (!sheet) return <></>;
 
   return (
     <>
-      <ScrollControls pages={3} damping={0.25}>
+      <ScrollControls pages={3} damping={.5}>
        <Scene />
       </ScrollControls>
     </>
