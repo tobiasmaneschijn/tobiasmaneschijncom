@@ -1,6 +1,7 @@
 import { Scroll, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { ReactNode, useState } from "react";
+import { useResponsive } from "../hooks/useResponsive";
 import { Socials } from "../pages/introduction/SocialsPage";
 
 interface SectionProps {
@@ -10,17 +11,17 @@ interface SectionProps {
 }
 
 export function Section(props: SectionProps) {
+  const isMobile = useResponsive();
   return (
     <section
-      className={`h-screen flex flex-col  justify-center p-10 ${props.right ? "items-end" : "items-start"
-        }`}
+      className={`h-screen flex flex-col justify-center p-10 ${props.right ? "items-end" : "items-start"} max-md:items-center `}
       style={{
-        opacity: props.opacity,
+        opacity:  props.opacity,
       }}
     >
-      <div className="w-1/2 flex items-center justify-center">
-        <div className="max-w-lg w-full">
-          <div className="bg-white  shadow-md rounded-lg px-8 py-12">
+      <div className={`max-md:h-screen max-md:w-screen max-md:items-end w-1/2 items-start  flex justify-center `}>
+        <div className={`max-w-lg max-md:max-w-full max-md:mx-16 w-full`}>
+          <div className="bg-white bg-opacity-95  shadow-md rounded-lg px-8 py-12">
             {props.children}
           </div>
         </div>
@@ -45,7 +46,7 @@ export const Overlay = () => {
   return (
     <Scroll html>
       <div className="w-screen text-black  text-center gap-4">
-        <Section opacity={opacityFirstSection}>
+        <Section opacity={ opacityFirstSection}>
           <h1 className="font-semibold  text-2xl">
             Hello there, I'm <span className="text-blue-500">Tobias</span>
           </h1>
