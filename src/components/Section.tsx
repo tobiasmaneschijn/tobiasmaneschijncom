@@ -1,6 +1,7 @@
 import { Scroll, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { ReactNode, useState } from "react";
+import { Socials } from "../pages/introduction/SocialsPage";
 
 interface SectionProps {
   right?: boolean;
@@ -11,7 +12,7 @@ interface SectionProps {
 export function Section(props: SectionProps) {
   return (
     <section
-      className={`h-screen flex flex-col justify-center p-10 ${props.right ? "items-end" : "items-start"
+      className={`h-screen flex flex-col  justify-center p-10 ${props.right ? "items-end" : "items-start"
         }`}
       style={{
         opacity: props.opacity,
@@ -19,7 +20,7 @@ export function Section(props: SectionProps) {
     >
       <div className="w-1/2 flex items-center justify-center">
         <div className="max-w-lg w-full">
-          <div className="bg-white  rounded-lg px-8 py-12">
+          <div className="bg-white  shadow-md rounded-lg px-8 py-12">
             {props.children}
           </div>
         </div>
@@ -52,36 +53,36 @@ export const Overlay = () => {
             I am a software developer from Denmark.
           </p>
           <p className="mt-3 text-2xl font-semibold">
-           I love to
+            I love to
           </p>
-          
+
           <ul className="leading-10">
-          <li>
-            ↓
+            <li>
+              ↓
             </li>
             <li>
               <span className="text-blue-500">Solve</span> problems
             </li>
             <li>
-            ↓
+              ↓
             </li>
             <li>
               <span> <span className="text-blue-500">Build</span> solutions</span>
             </li>
             <li>
-            ↓
+              ↓
             </li>
             <li>
               <span className="text-blue-500">Design</span> software
             </li>
             <li>
-            ↓
+              ↓
             </li>
             <li>
               <span className="text-blue-500">Code</span> things
             </li>
             <li>
-            ↓
+              ↓
             </li>
             <li>
               <span className="text-blue-500">Expand</span> my skillset  <span className="text-blue-500">🚀</span>
@@ -93,14 +94,17 @@ export const Overlay = () => {
         </Section>
         <Section right opacity={opacitySecondSection}>
           <h1 className="font-semibold text-2xl">
-            I am a full-stack developer
+            I am a <span
+              className="text-blue-500">full-stack </span> developer
           </h1>
           <p className="text-gray-500">
             I have experience with a wide range of technologies and frameworks.
           </p>
 
           <p className="mt-3">
-            <h2 className="text-xl font-bold">Frameworks</h2>
+            <h2 className="text-xl font-bold 
+        text-blue-500
+            ">Frameworks</h2>
           </p>
           <ul className="leading-9">
             <li>React · NextJS </li>
@@ -109,7 +113,7 @@ export const Overlay = () => {
             <li>Unity · Unreal Engine</li>
           </ul>
           <p className="mt-3">
-            <h2 className="text-xl font-bold">Languages</h2>
+            <h2 className="text-xl font-bold text-blue-500">Languages</h2>
           </p>
           <ul className="leading-9">
             <li>C · C++ · C#</li>
@@ -118,39 +122,26 @@ export const Overlay = () => {
             <li>Python · PHP · SQL</li>
             <li> Swift </li>
           </ul>
-          <p className="mt-3">
-            <h2 className="text-xl font-bold">Soft Skills</h2>
-          </p>
-          <ul className="leading-9">
-            <li>
-              Client communication
-            </li>
-            <li>
-              Teamwork and collaboration
-            </li>
-            <li>
-              Quick learner and problem solver
-            </li>
-            <li>
-              Self-motivated and driven
-            </li>
-            <li>
 
-            </li>
-
-          </ul>
           <p className="animate-bounce  mt-6">↓</p>
         </Section>
         <Section opacity={opacityLastSection}>
           <h1 className="font-semibold text-2xl">
-            🤙 Call me maybe?
+            <span className="text-blue-500">Call me</span>  maybe?
+            
           </h1>
           <p className="text-gray-500">
             Let's talk. I'm always open for new opportunities.
           </p>
-          <p className="mt-6 p-3 bg-slate-200 rounded-lg">
-            📞 <a href="tel:(+45) 21 22 98 30">(+45) 21 22 98 30</a>
+          <p className="mt-6 p-3 rounded-lg shadow-md">
+            <a href="tel:(+45) 21 22 98 30">+45 21 22 98 30</a>
           </p>
+          <p className="mt-6 p-3 rounded-lg shadow-md">
+            <a href="mailto:s205422@dtu.com">tfrom222@gmail.com</a>
+          </p>
+          <div className="mt-6 p-3">
+          <Socials></Socials>
+          </div>
         </Section>
       </div>
     </Scroll>

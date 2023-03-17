@@ -12,6 +12,7 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
 import {editable as e} from '@theatre/r3f'
+import { animated, useSpring } from '@react-spring/three'
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -85,12 +86,21 @@ type GLTFResult = GLTF & {
 export function MacBook(props: JSX.IntrinsicElements['group']) {
   const { nodes, materials } = useGLTF('/models/macbook-transformed.glb') as GLTFResult
 
+  const {opacity: materialOpacity} = useSpring({
+    from: {
+      opacity: 0
+    },
+    to: {
+      opacity: 1
+    }
+  });
+
   
 
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null} >
       <e.group  theatreKey='macbook' scale={1} position={[0,-40,0]}>
-        <mesh geometry={nodes.NZXezpncDrTVPYd.geometry} material={materials.ToljNQRLmTtuwNl} />
+        <mesh geometry={nodes.NZXezpncDrTVPYd.geometry} material={materials.ToljNQRLmTtuwNl}  />
         <mesh geometry={nodes.NfMmOpMNmolpLfw.geometry} material={materials.NYJQUGhFFttpmSc} />
         <mesh geometry={nodes.TVhBYZaRqtFURFF.geometry} material={materials.aqhAfpkxnZPmIhk} />
         <mesh geometry={nodes.BzNfMMFMUvENCVB.geometry} material={materials.aqhAfpkxnZPmIhk} />

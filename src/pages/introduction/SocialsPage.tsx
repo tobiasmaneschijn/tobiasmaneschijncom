@@ -9,8 +9,9 @@ import GithubIcon from "../../assets/icons8-github.svg";
 import LinkedinIcon from "../../assets/icons8-linkedin.svg";
 import InstaIcon from "../../assets/icons8-instagram.svg";
 import ThreeButton from "../../components/three/ThreeButton";
+import { useMyContext } from "../../hooks/useMyContext";
 
-const Socials = () => {
+export const Socials = () => {
   return (
     <div className="flex flex-row gap-6">
       <a
@@ -63,6 +64,8 @@ export const SocialsAcceptPage = ({
       <div className="flex flex-row gap-12 text-center items-center">
         <Socials />
       </div>
+      <NavToPortfolio/>
+
     </div>
   );
 };
@@ -79,6 +82,20 @@ export const SocialsDeclinePage = ({
 
       <div className="flex flex-row gap-12 text-center items-center">
         <Socials />
+      </div>
+      <NavToPortfolio/>
+      
+    </div>
+  );
+};
+
+const NavToPortfolio = () => {
+  const context = useMyContext();
+  
+  return (
+    <div className="flex flex-row gap-2" onClick={() => context.setShowIntroduction(false)}>
+      <div className="text-blue-white  font-semibold text-xl  flex gap-2 text-center hover:text-blue-800  transition-all duration-200 hover:cursor-pointer">
+        Go to portfolio page
       </div>
     </div>
   );
