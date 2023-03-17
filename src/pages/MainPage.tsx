@@ -5,19 +5,21 @@ import { Experience } from "../components/Experience";
 import animationState from "../assets/animations/experience.json"
 
 export function MainPage() {
-  const sheet = getProject("Experience", {state: animationState}).sheet("Experience Sheet");
+  const sheet = getProject("Experience", { state: animationState }).sheet("Experience Sheet");
   return (
-    <Canvas
-      gl={{ preserveDrawingBuffer: true }}
-      camera={{
-        fov: 64,
-        position: [2.3, 1.5, 2.3],
-      }}
-    >
+    <div className="w-screen h-screen "> 
+      <Canvas
+       className="w-screen h-screen fade2-in"
+        gl={{ preserveDrawingBuffer: true }}
+        camera={{
+          fov: 90,
+          position: [2.3, 1.5, 2.3],
+        }}
+      >
         <SheetProvider sheet={sheet}>
-
-      <Experience />
-      </SheetProvider>
-    </Canvas>
+          <Experience />
+        </SheetProvider>
+      </Canvas>   
+      </div>
   );
 }

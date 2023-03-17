@@ -62,7 +62,7 @@ function App() {
   return (
     <div className="h-screen w-full m-0 overflow-hidden">
       <div
-        className={`gap-4 h-screen w-full m-0 flex flex-col text-white duration-300 transition-colors items-center justify-center overflow-hidden`}
+        className={`gap-4 h-screen w-full m-0 flex flex-col text-white duration-300 transition-all items-center justify-center overflow-hidden fade2-in ${context.showIntroduction ? "" : "bg-gradient-to-r from-[#ff416c] to-[#ff4b2b] "}}`}
         style={{ backgroundColor: backgroundColor }}
         {...handlers}
       >

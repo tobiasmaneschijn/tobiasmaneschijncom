@@ -1,8 +1,10 @@
-import { Gltf, OrbitControls, ScrollControls, useScroll } from "@react-three/drei";
+import { Gltf, OrbitControls, ScrollControls, Sky, Stars, useScroll } from "@react-three/drei";
 import { Overlay } from "./Section";
 import { MoonModel } from "../assets/models/Moon";
 import { Office } from "./Office";
 import { Model } from "./Planets";
+import { Coffee } from "./Coffee_mug";
+import { Phone } from "./Phone";
 import {
   SheetProvider,
   PerspectiveCamera,
@@ -10,6 +12,7 @@ import {
 } from "@theatre/r3f";
 import { useFrame } from "@react-three/fiber";
 import { getProject, val } from "@theatre/core";
+import { MacBook } from "./Macbook";
 export const Experience = () => {
   const sheet = useCurrentSheet();
   const scroll = useScroll();
@@ -18,7 +21,7 @@ export const Experience = () => {
 
   return (
     <>
-      <ScrollControls pages={5} damping={0.25}>
+      <ScrollControls pages={3} damping={0.25}>
        <Scene />
       </ScrollControls>
     </>
@@ -40,15 +43,16 @@ const Scene = () => {
        sheet.sequence.position = scroll.offset * sequenceLength;
     });
   
-    const bgColor = "#84a4f4";
+    const bgColor = "black";
   
     return (
       <>
-        <color attach="background" args={[bgColor]} />
         <ambientLight intensity={1} />
         <directionalLight position={[-5, 5, -5]} intensity={1.5} />
         <Overlay />
-        <Model />
+        <MacBook/>
+        <Coffee/>
+        <Phone/>
         <PerspectiveCamera
                 theatreKey="Camera"
                 makeDefault

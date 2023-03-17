@@ -8,7 +8,7 @@ import { getProject } from "@theatre/core";
 import studio from '@theatre/studio'
 import extension from '@theatre/r3f/dist/extension'
 
-studio.extend(extension)
+//studio.extend(extension)
 //studio.initialize()
 
 
@@ -16,7 +16,10 @@ studio.extend(extension)
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   
   <React.StrictMode>
-    <Suspense fallback={null}>
+    <Suspense fallback={<div className='bg-gradient-to-r from-[#ff416c] to-[#ff4b2b] '> 
+
+      </div>
+      }>
    <AppWrapper/>
    </Suspense>
   </React.StrictMode>,
