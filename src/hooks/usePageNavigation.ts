@@ -38,8 +38,8 @@ export function usePageNavigation(): [
     } else if (event.key === "ArrowLeft") {
       handleLeftArrowPress();
     } else if (event.key === "r") {
-      context.setShowIntroduction(true);
-      setCurrentPage(0);
+     // context.setShowIntroduction(true);
+     // setCurrentPage(0);
     }
   };
 

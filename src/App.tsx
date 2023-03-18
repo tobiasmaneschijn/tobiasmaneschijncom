@@ -19,9 +19,6 @@ export function AppWrapper() {
 
 function App() {
 
-
-
-
   const context = useMyContext();
   const [backgroundColor, setBackgroundColor] = useState("#9B5DE5");
   const [currentPage, setCurrentPage, handlers] = usePageNavigation();
@@ -63,18 +60,17 @@ function App() {
   return (
     <div className="h-screen w-full m-0 overflow-hidden">
       <div
-        className={`gap-4 h-screen w-full m-0 flex flex-col text-white duration-300 transition-all items-center justify-center overflow-hidden fade2-in ${context.showIntroduction ? "" : "bg-gradient-to-r from-[#ff416c] to-[#ff4b2b] "}}`}
-        style={{ backgroundColor: backgroundColor }}
-        {...handlers}
+        className={`gap-4 h-screen w-full m-0 flex flex-col text-white duration-300 transition-all items-center justify-center overflow-hidden fade2-in bg-gradient-to-r from-[#ff416c] to-[#ff4b2b]`}
       >
-        {context.showIntroduction ? (
+        { /*context.showIntroduction ? (
           <Introduction
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
           />
         ) : (
           <MainPage />
-        )}
+        )*/}
+        <MainPage />
       </div>
     </div>
   );
